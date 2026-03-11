@@ -1,0 +1,626 @@
+<!-- wp:html -->
+<style>
+  #r2dFrs, #r2dFrs *{ box-sizing:border-box; }
+
+  #r2dFrs{
+    --bg:#070b14;
+    --bg2:#05070d;
+    --card:rgba(18,26,43,.82);
+    --text:#eef3ff;
+    --muted:#aab6cf;
+    --line:rgba(255,255,255,.10);
+    --shadow:0 16px 40px rgba(0,0,0,.38);
+    --red:#e53b3b;
+    --red2:#b81f2d;
+    --amber:#ffb84d;
+    --green:#69d28c;
+    --r:18px;
+    --max:1240px;
+
+    color:var(--text);
+    background:
+      radial-gradient(1000px 520px at 20% 0%, rgba(229,59,59,.12), transparent 55%),
+      radial-gradient(900px 500px at 80% 10%, rgba(74,163,255,.08), transparent 60%),
+      linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+    padding:28px 16px 40px;
+  }
+
+  #r2dFrs .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+  }
+
+  #r2dFrs .hero{
+    border:1px solid var(--line);
+    border-radius:22px;
+    box-shadow:var(--shadow);
+    background:
+      linear-gradient(180deg, rgba(7,11,20,.5), rgba(7,11,20,.88)),
+      url("https://reddi2drive.co.uk/wp-content/uploads/2026/02/Hero-Image.jpg") center/cover no-repeat;
+    padding:28px 22px 20px;
+    margin-bottom:18px;
+  }
+
+  #r2dFrs .top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:14px;
+    margin-bottom:18px;
+  }
+
+  #r2dFrs .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+
+  #r2dFrs .brand img{
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    background:#f5f5f0;
+    padding:5px;
+    border:1px solid rgba(255,255,255,.16);
+  }
+
+  #r2dFrs .brandText{
+    font-weight:900;
+    font-size:18px;
+  }
+
+  #r2dFrs .brandText .two{ color:var(--red); }
+
+  #r2dFrs .pillRow{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+
+  #r2dFrs .pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 14px;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:800;
+    color:#fff;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.06);
+  }
+
+  #r2dFrs h1{
+    margin:0 0 8px;
+    font-size:clamp(30px,5vw,54px);
+    line-height:1.02;
+    font-weight:950;
+  }
+
+  #r2dFrs .sub{
+    margin:0;
+    max-width:860px;
+    font-size:clamp(16px,2vw,20px);
+    line-height:1.55;
+    color:rgba(238,243,255,.86);
+  }
+
+  #r2dFrs .toolbar{
+    display:grid;
+    grid-template-columns:360px minmax(0,1fr);
+    gap:14px;
+    margin:0 0 18px;
+  }
+
+  #r2dFrs .inputWrap,
+  #r2dFrs .selectWrap{
+    border:1px solid var(--line);
+    border-radius:16px;
+    background:rgba(10,16,28,.62);
+    box-shadow:var(--shadow);
+    min-height:58px;
+    display:flex;
+    align-items:center;
+    padding:0 16px;
+  }
+
+  #r2dFrs select,
+  #r2dFrs input{
+    width:100%;
+    background:transparent;
+    border:0;
+    color:var(--text);
+    font-size:16px;
+    outline:none;
+  }
+
+  #r2dFrs select option{
+    background:#0f1726;
+    color:#fff;
+  }
+
+  #r2dFrs .searchIcon{
+    margin-right:10px;
+    opacity:.78;
+  }
+
+  #r2dFrs .layout{
+    display:grid;
+    grid-template-columns:360px minmax(0,1fr);
+    gap:18px;
+    align-items:start;
+  }
+
+  #r2dFrs .card{
+    border:1px solid var(--line);
+    background:
+      radial-gradient(900px 240px at 20% 0%, rgba(229,59,59,.08), transparent 58%),
+      linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)),
+      var(--card);
+    box-shadow:var(--shadow);
+    border-radius:22px;
+    overflow:hidden;
+  }
+
+  #r2dFrs .sideList{
+    padding:10px;
+  }
+
+  #r2dFrs .sideBtn{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px;
+    border-radius:14px;
+    border:0;
+    background:transparent;
+    color:#fff;
+    text-align:left;
+    font-size:17px;
+    cursor:pointer;
+  }
+
+  #r2dFrs .sideBtn:hover{
+    background:rgba(255,255,255,.05);
+  }
+
+  #r2dFrs .sideBtn.active{
+    background:linear-gradient(180deg, rgba(229,59,59,.96), rgba(184,31,45,.96));
+    box-shadow:0 14px 30px rgba(229,59,59,.25);
+  }
+
+  #r2dFrs .sideDot{
+    width:22px;
+    height:22px;
+    border-radius:999px;
+    display:grid;
+    place-items:center;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.18);
+    font-size:12px;
+    flex:0 0 auto;
+  }
+
+  #r2dFrs .mainStack{
+    display:grid;
+    gap:16px;
+  }
+
+  #r2dFrs .faultCard{
+    border:1px solid var(--line);
+    background:
+      radial-gradient(800px 220px at 20% 0%, rgba(74,163,255,.05), transparent 55%),
+      linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.02)),
+      rgba(18,26,43,.86);
+    box-shadow:var(--shadow);
+    border-radius:20px;
+    overflow:hidden;
+  }
+
+  #r2dFrs .faultHead{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    padding:18px 20px;
+    cursor:pointer;
+  }
+
+  #r2dFrs .faultHead h3{
+    margin:0;
+    font-size:clamp(22px,3vw,32px);
+    line-height:1.08;
+    font-weight:900;
+  }
+
+  #r2dFrs .chev{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.10);
+    font-size:20px;
+    transition:transform .15s ease;
+  }
+
+  #r2dFrs .faultCard.open .chev{
+    transform:rotate(180deg);
+  }
+
+  #r2dFrs .faultBody{
+    display:none;
+    border-top:1px solid rgba(255,255,255,.08);
+  }
+
+  #r2dFrs .faultCard.open .faultBody{
+    display:block;
+  }
+
+  #r2dFrs .section{
+    border-top:1px solid rgba(255,255,255,.07);
+  }
+
+  #r2dFrs .section:first-child{
+    border-top:0;
+  }
+
+  #r2dFrs .sectionHead{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:16px 20px;
+    cursor:pointer;
+  }
+
+  #r2dFrs .sectionLeft{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+
+  #r2dFrs .badge{
+    width:28px;
+    height:28px;
+    border-radius:10px;
+    display:grid;
+    place-items:center;
+    font-size:15px;
+    font-weight:900;
+  }
+
+  #r2dFrs .analysis .badge{
+    background:rgba(255,184,77,.16);
+    color:#ffd38f;
+    border:1px solid rgba(255,184,77,.26);
+  }
+
+  #r2dFrs .risk .badge{
+    background:rgba(255,94,94,.14);
+    color:#ff8f8f;
+    border:1px solid rgba(255,94,94,.24);
+  }
+
+  #r2dFrs .strategy .badge{
+    background:rgba(105,210,140,.14);
+    color:#92ebb0;
+    border:1px solid rgba(105,210,140,.24);
+  }
+
+  #r2dFrs .sectionTitle{
+    font-size:18px;
+    font-weight:900;
+  }
+
+  #r2dFrs .analysis .sectionTitle{ color:#ffd38f; }
+  #r2dFrs .risk .sectionTitle{ color:#ff8f8f; }
+  #r2dFrs .strategy .sectionTitle{ color:#92ebb0; }
+
+  #r2dFrs .sectionBody{
+    display:none;
+    padding:0 20px 18px 60px;
+  }
+
+  #r2dFrs .section.open .sectionBody{
+    display:block;
+  }
+
+  #r2dFrs ul{
+    margin:0;
+    padding-left:18px;
+  }
+
+  #r2dFrs li{
+    margin:0 0 10px;
+    line-height:1.55;
+    color:rgba(238,243,255,.90);
+  }
+
+  #r2dFrs li:last-child{ margin-bottom:0; }
+
+  #r2dFrs .quizCta{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    margin:8px 18px 18px;
+    padding:16px 18px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.04);
+    text-decoration:none;
+  }
+
+  #r2dFrs .quizCta small{
+    display:block;
+    color:rgba(238,243,255,.74);
+    margin-bottom:4px;
+  }
+
+  #r2dFrs .quizCta strong{
+    font-size:18px;
+    color:#ff8f8f;
+  }
+
+  #r2dFrs .empty{
+    padding:20px;
+    text-align:center;
+    color:var(--muted);
+  }
+
+  @media (max-width:1100px){
+    #r2dFrs .toolbar,
+    #r2dFrs .layout{
+      grid-template-columns:1fr;
+    }
+  }
+
+  @media (max-width:700px){
+    #r2dFrs{ padding:18px 12px 28px; }
+    #r2dFrs .hero{ padding:18px 16px; }
+    #r2dFrs .top{ flex-direction:column; align-items:flex-start; }
+    #r2dFrs .sectionBody{ padding:0 16px 16px 16px; }
+    #r2dFrs .faultHead,
+    #r2dFrs .sectionHead{ padding-left:16px; padding-right:16px; }
+    #r2dFrs .quizCta{ margin:8px 14px 14px; padding:14px; }
+  }
+</style>
+
+<div id="r2dFrs">
+  <div class="wrap">
+
+    <section class="hero">
+      <div class="top">
+        <div class="brand">
+          <img src="https://reddi2drive.co.uk/wp-content/uploads/2026/01/logo.png" alt="Reddi2Drive">
+          <div class="brandText">Reddi<span class="two">2</span>Drive</div>
+        </div>
+
+        <div class="pillRow">
+          <a class="pill" href="/practice/">📋 Practice+ Member</a>
+          <a class="pill" href="/2408-2/">📘 Your Account</a>
+        </div>
+      </div>
+
+      <h1>Faults, Risks &amp; Strategies</h1>
+      <p class="sub">Learn how to avoid common driving faults, understand the risks, and use effective strategies to pass your driving test.</p>
+    </section>
+
+    <div class="toolbar">
+      <div class="selectWrap">
+        <select id="r2dFrsCategory"></select>
+      </div>
+
+      <div class="inputWrap">
+        <span class="searchIcon">🔎</span>
+        <input id="r2dFrsSearch" type="search" placeholder="Search faults...">
+      </div>
+    </div>
+
+    <div class="layout">
+      <aside>
+        <div class="card">
+          <div id="r2dFrsSideList" class="sideList"></div>
+        </div>
+      </aside>
+
+      <main>
+        <div id="r2dFrsMain" class="mainStack"></div>
+      </main>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  const DATA = {
+    "Junctions": {
+      icon:"🧾",
+      faults:[
+        {
+          title:"Fault title here",
+          analysis:[
+            "Add analysis point here",
+            "Add another analysis point here"
+          ],
+          risk:[
+            "Add risk point here",
+            "Add another risk point here"
+          ],
+          strategy:[
+            "Add strategy point here",
+            "Add another strategy point here"
+          ],
+          quiz:"Junctions Quiz"
+        },
+        {
+          title:"Second fault title",
+          analysis:["Add text here"],
+          risk:["Add text here"],
+          strategy:["Add text here"],
+          quiz:"Junctions Quiz"
+        }
+      ]
+    },
+
+    "Roundabouts": {
+      icon:"🛞",
+      faults:[
+        {
+          title:"Fault title here",
+          analysis:["Add text here"],
+          risk:["Add text here"],
+          strategy:["Add text here"],
+          quiz:"Roundabouts Quiz"
+        }
+      ]
+    },
+
+    "Moving off": {
+      icon:"⚪",
+      faults:[
+        {
+          title:"Fault title here",
+          analysis:["Add text here"],
+          risk:["Add text here"],
+          strategy:["Add text here"],
+          quiz:"Moving Off Quiz"
+        }
+      ]
+    }
+  };
+
+  const catSelect = document.getElementById("r2dFrsCategory");
+  const searchInput = document.getElementById("r2dFrsSearch");
+  const sideList = document.getElementById("r2dFrsSideList");
+  const main = document.getElementById("r2dFrsMain");
+
+  const categories = Object.keys(DATA);
+  let activeCategory = categories[0] || "";
+
+  function makeOption(text){
+    const o = document.createElement("option");
+    o.value = text;
+    o.textContent = text;
+    return o;
+  }
+
+  function renderSelect(){
+    catSelect.innerHTML = "";
+    categories.forEach(cat => catSelect.appendChild(makeOption(cat)));
+    catSelect.value = activeCategory;
+  }
+
+  function renderSide(){
+    sideList.innerHTML = "";
+    categories.forEach(cat => {
+      const btn = document.createElement("button");
+      btn.className = "sideBtn" + (cat === activeCategory ? " active" : "");
+      btn.innerHTML = `
+        <span class="sideDot">${DATA[cat].icon || "•"}</span>
+        <span>${cat}</span>
+      `;
+      btn.addEventListener("click", () => {
+        activeCategory = cat;
+        catSelect.value = cat;
+        renderSide();
+        renderMain();
+      });
+      sideList.appendChild(btn);
+    });
+  }
+
+  function sectionHtml(type, title, items){
+    const icon = type === "analysis" ? "!" : type === "risk" ? "!" : "✓";
+    return `
+      <div class="section ${type} open">
+        <div class="sectionHead">
+          <div class="sectionLeft">
+            <span class="badge">${icon}</span>
+            <span class="sectionTitle">${title}</span>
+          </div>
+          <span>⌃</span>
+        </div>
+        <div class="sectionBody">
+          <ul>
+            ${items.map(item => `<li>${item}</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderMain(){
+    const q = (searchInput.value || "").trim().toLowerCase();
+    const faults = (DATA[activeCategory]?.faults || []).filter(f =>
+      !q ||
+      f.title.toLowerCase().includes(q) ||
+      f.analysis.join(" ").toLowerCase().includes(q) ||
+      f.risk.join(" ").toLowerCase().includes(q) ||
+      f.strategy.join(" ").toLowerCase().includes(q)
+    );
+
+    if(!faults.length){
+      main.innerHTML = `<div class="card"><div class="empty">No matching faults found.</div></div>`;
+      bindToggles();
+      return;
+    }
+
+    main.innerHTML = faults.map((fault, i) => `
+      <article class="faultCard ${i === 0 ? "open" : ""}">
+        <div class="faultHead">
+          <h3>${fault.title}</h3>
+          <div class="chev">⌄</div>
+        </div>
+
+        <div class="faultBody">
+          ${sectionHtml("analysis", "Analysis", fault.analysis)}
+          ${sectionHtml("risk", "Risk", fault.risk)}
+          ${sectionHtml("strategy", "Strategy", fault.strategy)}
+
+          <a href="#" class="quizCta">
+            <div>
+              <small>Test your knowledge on:</small>
+              <strong>${fault.quiz || "Related Quiz"}</strong>
+            </div>
+            <span>›</span>
+          </a>
+        </div>
+      </article>
+    `).join("");
+
+    bindToggles();
+  }
+
+  function bindToggles(){
+    main.querySelectorAll(".faultHead").forEach(head => {
+      head.addEventListener("click", () => {
+        head.parentElement.classList.toggle("open");
+      });
+    });
+
+    main.querySelectorAll(".sectionHead").forEach(head => {
+      head.addEventListener("click", () => {
+        head.parentElement.classList.toggle("open");
+      });
+    });
+  }
+
+  catSelect.addEventListener("change", () => {
+    activeCategory = catSelect.value;
+    renderSide();
+    renderMain();
+  });
+
+  searchInput.addEventListener("input", renderMain);
+
+  renderSelect();
+  renderSide();
+  renderMain();
+})();
+</script>
+<!-- /wp:html -->
